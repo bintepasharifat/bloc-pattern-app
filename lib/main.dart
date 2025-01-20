@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_10/app_blocs.dart';
 import 'package:flutter_application_10/app_events.dart';
 import 'package:flutter_application_10/app_states.dart';
+import 'package:flutter_application_10/pages/sign_in/sign_in.dart';
 import 'package:flutter_application_10/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:flutter_application_10/pages/welcome/welcome.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,17 +15,36 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => WelcomeBlocs(),
-        child: ScreenUtilInit(
-          builder: (context, child) => const MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: Welcome(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          lazy: false,
+          create: (context) => WelcomeBlocs(),
+        ),
+        BlocProvider(
+          lazy: false,
+          create: (context) => AppBlocs(),
+        ),
+      ],
+      child: ScreenUtilInit(
+        builder: (context, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            appBarTheme: const AppBarTheme(
+              elevation: 0,
+              backgroundColor: Colors.white,
+            ),
           ),
-        ));
+          home: Welcome(),
+          routes: {
+            "myHomePage": (context) => const MyHomePage(),
+            "signIn": (context) => const SignIn(),
+          },
+        ),
+      ),
+    );
   }
 }
 

@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_10/main.dart';
 import 'package:flutter_application_10/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:flutter_application_10/pages/welcome/bloc/welcome_events.dart';
 import 'package:flutter_application_10/pages/welcome/bloc/welcome_states.dart';
@@ -120,13 +121,19 @@ class _WelcomeState extends State<Welcome> {
             //within 0-2 index
 
             if (index < 3) {
-              //animation
+              // animation
               pageController.animateToPage(
                 index,
                 duration: const Duration(microseconds: 5000),
                 curve: Curves.easeIn,
               );
-            } else {}
+            } else {
+              //jump to a new page
+              // Navigator.of(context)
+              // .push(MaterialPageRoute(builder: (context) => MyHomePage()));
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil("signIn", (rout) => false);
+            }
           },
           child: Container(
             margin: EdgeInsets.only(top: 70.h, left: 30.w, right: 30),
