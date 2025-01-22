@@ -87,8 +87,8 @@ class _WelcomeState extends State<Welcome> {
     return Column(
       children: [
         SizedBox(
-          width: 200.w,
-          height: 200.w,
+          width: 100.w,
+          height: 100.w,
           child: Image.asset(
             imagePath,
             fit: BoxFit.cover,
@@ -105,7 +105,7 @@ class _WelcomeState extends State<Welcome> {
           ),
         ),
         Container(
-          width: 275.w,
+          width: 175.w,
           padding: EdgeInsets.only(left: 25.w, right: 25.w),
           child: Text(
             subTitle,
@@ -137,8 +137,8 @@ class _WelcomeState extends State<Welcome> {
           },
           child: Container(
             margin: EdgeInsets.only(top: 70.h, left: 30.w, right: 30),
-            width: 200.w,
-            height: 50.h,
+            width: 150.w,
+            height: 40.h,
             decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.all(Radius.circular(15)),

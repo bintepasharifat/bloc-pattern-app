@@ -69,50 +69,94 @@ Widget reusableText(String text) {
   );
 }
 
-Widget buildTextField(String text, String textType) {
+Widget buildTextField(String hintText, String textType, String iconName) {
   return Container(
-      width: 140.w,
-      height: 45.h,
+      width: 200.w,
+      height: 40.h,
+      margin: EdgeInsets.only(bottom: 20.h),
       decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.all(Radius.circular(15.w)),
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(10.w)),
         border: Border.all(color: Colors.black),
       ),
       child: Row(children: [
         Container(
-          width: 11.w,
-          margin: EdgeInsets.only(left: 13.w),
-          height: 11.w,
-          child: Image.asset("assets/icons/user.png"),
+          width: 16.w,
+          margin: EdgeInsets.only(left: 11.w),
+          height: 16.w,
+          child: Image.asset("assets/icons/$iconName.png"),
         ),
         SizedBox(
-            width: 100.w,
-            height: 40.h,
-            child: TextField(
-              keyboardType: TextInputType.multiline,
-              decoration: const InputDecoration(
-                hintText: "Enter your email adress",
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
+          width: 170.w,
+          height: 40.h,
+          child: TextField(
+            keyboardType: TextInputType.multiline,
+            decoration: InputDecoration(
+                hintText: hintText,
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
                 ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
+                disabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
                 ),
-              ),
-            )),
+                hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5))),
+            style: TextStyle(
+              color: Colors.green,
+              fontFamily: "Avenir",
+              fontWeight: FontWeight.normal,
+              fontSize: 12.sp,
+            ),
+            autocorrect: false,
+            obscureText: textType == "password" ? true : false,
+          ),
+        ),
       ]));
+}
+
+Widget forgotPassword() {
+  return Container(
+    margin: EdgeInsets.only(left: 25.w),
+    width: 260.w,
+    height: 30.h,
+    child: GestureDetector(
+      onTap: () {},
+      child: Text(
+        "Forgot password",
+        style: TextStyle(
+          color: Colors.black,
+          decoration: TextDecoration.underline,
+          decorationColor: Colors.blue,
+          fontSize: 12.sp,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget buildLogInAdnRegButton(String buttonName) {
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      width: 200.w,
+      height: 40.h,
+      margin: EdgeInsets.only(left: 25.w, right: 25.w, top: 70.h),
+      decoration: BoxDecoration(
+          color: Colors.blue, borderRadius: BorderRadius.circular(15.w),
+             boxShadow: [
+              BoxShadow(
+                spreadRadius: 1,
+                blurRadius: 2,
+                offset: Offset(0,1),
+                color: Colors.grey.withOpacity(0.1)
+              )
+             ]
+          ),
+    ),
+  );
 }
